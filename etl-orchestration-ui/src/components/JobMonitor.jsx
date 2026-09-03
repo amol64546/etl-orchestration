@@ -41,7 +41,7 @@ export default function JobMonitor({ onJobDetails }) {
 
   const startStream = (jobId) => {
     if (eventSourceRef.current) eventSourceRef.current.close();
-    const es = new EventSource(`/api/jobs/${jobId}/stream`);
+    const es = new EventSource(`http://localhost:8082/jobs/status/${jobId}/stream`);
     eventSourceRef.current = es;
     setStreamingJobId(jobId);
     setStreamStatus('Connecting...');
